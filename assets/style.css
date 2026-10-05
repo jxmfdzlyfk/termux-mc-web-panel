@@ -1,0 +1,295 @@
+:root {
+    --bg: #1a1a1a;
+    --bg-card: #252525;
+    --bg-input: #2d2d2d;
+    --fg: #e0e0e0;
+    --fg-muted: #888;
+    --border: #333;
+    --primary: #4a9eff;
+    --success: #4caf50;
+    --warning: #ff9800;
+    --danger: #f44336;
+    --console-bg: #0d0d0d;
+}
+
+[data-theme="light"] {
+    --bg: #f5f5f5;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --fg: #1a1a1a;
+    --fg-muted: #666;
+    --border: #ddd;
+    --console-bg: #1a1a1a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 14px;
+    line-height: 1.5;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ===== 顶栏 ===== */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.brand { font-size: 16px; font-weight: 600; }
+.actions { display: flex; gap: 8px; align-items: center; }
+
+/* ===== 容器 ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+    display: grid;
+    gap: 16px;
+}
+
+/* ===== 卡片 ===== */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+}
+.card h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--fg);
+}
+
+/* ===== 状态卡片 ===== */
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.status-grid > div {
+    background: var(--bg-input);
+    padding: 10px 12px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.status-grid .label {
+    font-size: 12px;
+    color: var(--fg-muted);
+}
+.status-grid > div > span:last-child {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* ===== 徽章 ===== */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.badge-online { background: var(--success); color: white; }
+.badge-offline { background: var(--fg-muted); color: white; }
+.badge-unknown { background: var(--warning); color: white; }
+
+/* ===== 按钮 ===== */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.1s;
+    color: white;
+    background: var(--fg-muted);
+}
+.btn:hover { opacity: 0.85; }
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary { background: var(--primary); }
+.btn-success { background: var(--success); }
+.btn-warning { background: var(--warning); }
+.btn-danger { background: var(--danger); }
+.btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--fg);
+    text-decoration: none;
+    padding: 6px 12px;
+}
+
+.controls { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ===== 控制台 ===== */
+.console-output {
+    background: var(--console-bg);
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    padding: 12px;
+    border-radius: 6px;
+    min-height: 120px;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin-bottom: 12px;
+}
+.console-input {
+    display: flex;
+    gap: 8px;
+}
+.console-input input {
+    flex: 1;
+    padding: 10px 12px;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 14px;
+}
+.console-input input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* ===== 日志 ===== */
+.logs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.logs-output {
+    background: var(--console-bg);
+    color: #ddd;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    padding: 12px;
+    border-radius: 6px;
+    max-height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* ===== Switch ===== */
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--fg-muted);
+    cursor: pointer;
+}
+
+/* ===== 登录页 ===== */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+.login-box {
+    background: var(--bg-card);
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+.login-box h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+.subtitle {
+    color: var(--fg-muted);
+    font-size: 13px;
+    margin-bottom: 24px;
+}
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--fg);
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+.login-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+.login-box button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.login-box button[type="submit"]:hover { opacity: 0.9; }
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--fg);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 16px;
+    font-size: 13px;
+}
+
+/* ===== Alert ===== */
+.alert {
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+.alert-error {
+    background: rgba(244, 67, 54, 0.15);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+}
+
+/* ===== 移动端适配 ===== */
+@media (max-width: 600px) {
+    .container { padding: 12px; gap: 12px; }
+    .card { padding: 12px; }
+    .status-grid { grid-template-columns: repeat(2, 1fr); }
+    .controls { flex-direction: column; }
+    .controls .btn { width: 100%; }
+    .console-input { flex-direction: column; }
+    .console-input .btn { width: 100%; }
+}
